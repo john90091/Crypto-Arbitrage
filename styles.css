@@ -82,3 +82,9 @@ h1, h2 {
 .trade-btn:hover {
     background-color: #1a5fbf;
 }
+.top-gainers{
+    margin-bottom: 5%;
+}
+.crypto-table{
+    margin-bottom: 5%;
+}
