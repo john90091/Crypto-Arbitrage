@@ -92,6 +92,150 @@
     <!-- Header End -->
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 10px;
+    }
+    th {
+      background-color: #16D5FF;
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+    }
+    .positive-change {
+      color: #28a745; /* Зеленый цвет для положительных изменений */
+    }
+    .negative-change {
+      color: #dc3545; /* Красный цвет для отрицательных изменений */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Trading Opportunity</h2>
+    <h3>Hot Coins</h3>
+    <table id="hot-coins-table">
+      <thead>
+        <tr>
+          <th>Trading Pairs</th>
+          <th>Last Traded Price</th>
+          <th>24H Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3">Loading...</td></tr>
+      </tbody>
+    </table>
+
+    <h3>New Listings</h3>
+    <table id="new-listings-table">
+      <thead>
+        <tr>
+          <th>Trading Pairs</th>
+          <th>Last Traded Price</th>
+          <th>24H Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/24hr";
+
+    // Популярные криптовалюты
+    const hotCoinsList = ["BTCUSDT", "ETHUSDT", "XRPUSDT", "SOLUSDT", "BNBUSDT", "ADAUSDT", "DOGEUSDT", "DOTUSDT", "ATOMUSDT", "SHIBUSDT"];
+
+    // Функция для получения данных популярных криптовалют
+    async function fetchHotCoins() {
+      try {
+        const response = await fetch(BINANCE_API_URL);
+        const data = await response.json();
+
+        // Фильтруем только популярные пары
+        const hotCoins = data.filter(item => hotCoinsList.includes(item.symbol));
+        populateTable("hot-coins-table", hotCoins);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных для Hot Coins:", error);
+      }
+    }
+
+    // Функция для получения данных новых листингов
+    async function fetchNewListings() {
+      try {
+        const response = await fetch(BINANCE_API_URL);
+        const data = await response.json();
+
+        // Найти новые листинги — условие: пары, недавно добавленные
+        const newListings = data.slice(-10); // Симуляция новых листингов (последние 10 пар)
+        populateTable("new-listings-table", newListings);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных для New Listings:", error);
+      }
+    }
+
+    // Функция для форматирования чисел в зависимости от значений
+    function formatPrice(price) {
+      // Если цена меньше 1, показываем 8 знаков после запятой, иначе 2
+      return parseFloat(price) < 1 
+        ? parseFloat(price).toFixed(8) 
+        : parseFloat(price).toFixed(2);
+    }
+
+    // Функция для заполнения таблиц
+    function populateTable(tableId, data) {
+      const tableBody = document.getElementById(tableId).querySelector("tbody");
+      tableBody.innerHTML = ""; // Очистить таблицу
+
+      data.forEach(item => {
+        const priceChange = parseFloat(item.priceChangePercent);
+        const priceChangeClass = priceChange >= 0 ? "positive-change" : "negative-change";
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.symbol}</td>
+          <td>${formatPrice(item.lastPrice)}</td>
+          <td class="${priceChangeClass}">${priceChange.toFixed(2)}%</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Запуск функций
+    fetchHotCoins(); // Загрузка Hot Coins
+    fetchNewListings(); // Загрузка новых листингов
+
+    // Обновление обеих таблиц каждые 10 секунд
+    setInterval(fetchHotCoins, 10000);
+    setInterval(fetchNewListings, 10000);
+  </script>
+</body>
+</html>
+
+    
     <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -323,151 +467,6 @@
         </div>
     </div>
     <!-- Roadmap End -->
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Tracker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      padding: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      text-align: center;
-      padding: 10px;
-    }
-    th {
-      background-color: #16D5FF;
-      color: white;
-    }
-
-    h2 {
-      text-align: center;
-    }
-    .positive-change {
-      color: #28a745; /* Зеленый цвет для положительных изменений */
-    }
-    .negative-change {
-      color: #dc3545; /* Красный цвет для отрицательных изменений */
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Trading Opportunity</h2>
-    <h3>Hot Coins</h3>
-    <table id="hot-coins-table">
-      <thead>
-        <tr>
-          <th>Trading Pairs</th>
-          <th>Last Traded Price</th>
-          <th>24H Change</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="3">Loading...</td></tr>
-      </tbody>
-    </table>
-
-    <h3>New Listings</h3>
-    <table id="new-listings-table">
-      <thead>
-        <tr>
-          <th>Trading Pairs</th>
-          <th>Last Traded Price</th>
-          <th>24H Change</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="3">Loading...</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <script>
-    const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/24hr";
-
-    // Популярные криптовалюты
-    const hotCoinsList = ["BTCUSDT", "ETHUSDT", "XRPUSDT", "SOLUSDT", "BNBUSDT", "ADAUSDT", "DOGEUSDT", "DOTUSDT", "ATOMUSDT", "SHIBUSDT"];
-
-    // Функция для получения данных популярных криптовалют
-    async function fetchHotCoins() {
-      try {
-        const response = await fetch(BINANCE_API_URL);
-        const data = await response.json();
-
-        // Фильтруем только популярные пары
-        const hotCoins = data.filter(item => hotCoinsList.includes(item.symbol));
-        populateTable("hot-coins-table", hotCoins);
-      } catch (error) {
-        console.error("Ошибка при загрузке данных для Hot Coins:", error);
-      }
-    }
-
-    // Функция для получения данных новых листингов
-    async function fetchNewListings() {
-      try {
-        const response = await fetch(BINANCE_API_URL);
-        const data = await response.json();
-
-        // Найти новые листинги — условие: пары, недавно добавленные
-        const newListings = data.slice(-10); // Симуляция новых листингов (последние 10 пар)
-        populateTable("new-listings-table", newListings);
-      } catch (error) {
-        console.error("Ошибка при загрузке данных для New Listings:", error);
-      }
-    }
-
-    // Функция для форматирования чисел в зависимости от значений
-    function formatPrice(price) {
-      // Если цена меньше 1, показываем 8 знаков после запятой, иначе 2
-      return parseFloat(price) < 1 
-        ? parseFloat(price).toFixed(8) 
-        : parseFloat(price).toFixed(2);
-    }
-
-    // Функция для заполнения таблиц
-    function populateTable(tableId, data) {
-      const tableBody = document.getElementById(tableId).querySelector("tbody");
-      tableBody.innerHTML = ""; // Очистить таблицу
-
-      data.forEach(item => {
-        const priceChange = parseFloat(item.priceChangePercent);
-        const priceChangeClass = priceChange >= 0 ? "positive-change" : "negative-change";
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${item.symbol}</td>
-          <td>${formatPrice(item.lastPrice)}</td>
-          <td class="${priceChangeClass}">${priceChange.toFixed(2)}%</td>
-        `;
-        tableBody.appendChild(row);
-      });
-    }
-
-    // Запуск функций
-    fetchHotCoins(); // Загрузка Hot Coins
-    fetchNewListings(); // Загрузка новых листингов
-
-    // Обновление обеих таблиц каждые 10 секунд
-    setInterval(fetchHotCoins, 10000);
-    setInterval(fetchNewListings, 10000);
-  </script>
-</body>
-</html>
 
 
 
