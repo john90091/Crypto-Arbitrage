@@ -328,132 +328,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Trading Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 10px;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    .positive-change {
+      color: #28a745; /* Зеленый цвет для положительных изменений */
+    }
+    .negative-change {
+      color: #dc3545; /* Красный цвет для отрицательных изменений */
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Catch Your Next Trading Opportunity</h1>
-    </header>
-    <main class="container">
-        <section class="market-title">
-            
-        </section>
+  <div class="container">
+    <h2>Крипто Трекер</h2>
+    <h3>Горячие монеты (Hot Coins)</h3>
+    <table id="hot-coins-table">
+      <thead>
+        <tr>
+          <th>Торговая пара</th>
+          <th>Последняя цена</th>
+          <th>Изменение за 24ч (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3">Загрузка...</td></tr>
+      </tbody>
+    </table>
 
-        <section class="hot-coins">
-            <h2>Hot Coins</h2>
-            <table class="crypto-table">
-                <thead>
-                    <tr>
-                        <th>Trading Pairs</th>
-                        <th>Last Traded Price</th>
-                        <th>24H Change</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>BTC/USDT</td>
-                        <td>104,984.72</td>
-                        <td class="positive">+0.51%</td>
-                        <td><a href="#" class="trade-btn"></a></td>
-                    </tr>
-                    <tr>
-                        <td>ETH/USDT</td>
-                        <td>3,341.94</td>
-                        <td class="positive">+1.64%</td>
-                        <td><a href="#" class="trade-btn"></a></td>
-                    </tr>
-                    <tr>
-                        <td>SOL/USDT</td>
-                        <td>259.27</td>
-                        <td class="positive">+5.05%</td>
-                        <td><a href="#" class="trade-btn"></a></td>
-                    </tr>
-                    <tr>
-                        <td>TRUMP/USDT</td>
-                        <td>31.776</td>
-                        <td class="positive">+13.36%</td>
-                        <td><a href="#" class="trade-btn"></a></td>
-                    </tr>
-                    <tr>
-                        <td>XRP/USDT</td>
-                        <td>3.1404</td>
-                        <td class="positive">+1.25%</td>
-                        <td><a href="#" class="trade-btn"></a></td>
-                    </tr>
-                    <tr>
-                        <td>TOSHI/USDT</td>
-                        <td>0.00138152</td>
-                        <td class="positive">+104.20%</td>
-                        <td><a href="#" class="trade-btn"></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    <h3>Новые листинги (New Listings)</h3>
+    <table id="new-listings-table">
+      <thead>
+        <tr>
+          <th>Торговая пара</th>
+          <th>Последняя цена</th>
+          <th>Изменение за 24ч (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3">Загрузка...</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-        <section class="top-gainers">
-            <h2>Top Gainers</h2>
-            <table class="crypto-table">
-                <thead>
-                    <tr>
-                        <th>Trading Pairs</th>
-                        <th>Last Traded Price</th>
-                        <th>24H Change</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>TOSHI/USDT</td>
-                        <td>0.00138152</td>
-                        <td class="positive">+104.20%</td>
-                    </tr>
-                    <tr>
-                        <td>1000TOSHI/USDT</td>
-                        <td>1.3436</td>
-                        <td class="positive">+100.8%</td>
-                    </tr>
-                    <tr>
-                        <td>SALD/USDT</td>
-                        <td>0.000916</td>
-                        <td class="positive">+81.75%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+  <script>
+    const BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/24hr";
 
-        <section class="new-listings">
-            <h2>New Listings</h2>
-            <table class="crypto-table">
-                <thead>
-                    <tr>
-                        <th>Trading Pairs</th>
-                        <th>Last Traded Price</th>
-                        <th>24H Change</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>SOSO/USDT</td>
-                        <td>1.0349</td>
-                        <td class="positive">+48.82%</td>
-                    </tr>
-                    <tr>
-                        <td>PLUME/USDT</td>
-                        <td>0.14324</td>
-                        <td class="positive">+28.8%</td>
-                    </tr>
-                    <tr>
-                        <td>ANIME/USDT</td>
-                        <td>0.05644</td>
-                        <td class="negative">-1.89%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+    // Функция для получения данных с Binance API
+    async function fetchCryptoData() {
+      try {
+        const response = await fetch(BINANCE_API_URL);
+        const data = await response.json();
+
+        // Отфильтровать только пары с USDT
+        const usdtPairs = data.filter(item => item.symbol.endsWith("USDT"));
+
+        // Создать таблицу горячих монет (топ-5 по росту)
+        const hotCoins = usdtPairs
+          .sort((a, b) => parseFloat(b.priceChangePercent) - parseFloat(a.priceChangePercent))
+          .slice(0, 5);
+        populateTable("hot-coins-table", hotCoins);
+
+        // Симуляция новых листингов (случайный выбор 3 монет)
+        const newListings = usdtPairs.slice(-3);
+        populateTable("new-listings-table", newListings);
+
+      } catch (error) {
+        console.error("Ошибка при получении данных:", error);
+      }
+    }
+
+    // Функция для заполнения таблиц
+    function populateTable(tableId, data) {
+      const tableBody = document.getElementById(tableId).querySelector("tbody");
+      tableBody.innerHTML = ""; // Очистить таблицу
+
+      data.forEach(item => {
+        const priceChange = parseFloat(item.priceChangePercent);
+        const priceChangeClass = priceChange >= 0 ? "positive-change" : "negative-change";
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.symbol}</td>
+          <td>${parseFloat(item.lastPrice).toFixed(2)}</td>
+          <td class="${priceChangeClass}">${priceChange.toFixed(2)}%</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Запуск программы с обновлением каждые 10 секунд
+    fetchCryptoData(); // Первая загрузка данных
+    setInterval(fetchCryptoData, 10000); // Обновление каждые 10 секунд
+  </script>
 </body>
 </html>
 
