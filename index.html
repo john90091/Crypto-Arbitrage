@@ -235,6 +235,146 @@
 </body>
 </html>
 
+  <!-- Arbitrage Opportunities start -->
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arbitrage Opportunities</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .loading {
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+    }
+    .profit {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Arbitrage Opportunities</h2>
+    <div id="loading" class="loading">Loading...</div>
+    <table id="arbitrageTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Buy Exchange</th>
+          <th>Sell Exchange</th>
+          <th>Crypto Pair</th>
+          <th>Buy Price</th>
+          <th>Sell Price</th>
+          <th>Profit (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be inserted here dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const exchanges = [
+      'bitrue', 'bitso', 'coincatch', 'coincheck', 'coinex', 'coinlist', 'coinmate', 'coinmetro', 'coinone',
+      'coinsph', 'coinspot', 'cryptocom', 'currencycom', 'defx', 'delta', 'deribit', 'digifinex', 'ellipx', 'exmo', 'fmfwio',
+      'gate', 'gateio', 'gemini', 'hashkey', 'hitbtc', 'hollaex', 'htx', 'huobi'
+    ];
+
+    const cryptoPairs = [
+      'BTC/USDT', 'ETH/BTC', 'XRP/USDT', 'ADA/USDT', 'SOL/USDT', 'BNB/USDT', 'DOT/USDT', 'DOGE/USDT', 'LTC/USDT', 'AVAX/USDT'
+    ];
+
+    function generateRandomProfit(min, max) {
+      return (Math.random() * (max - min) + min).toFixed(2);
+    }
+
+    function generateMockData() {
+      const data = [];
+      for (let i = 0; i < 100; i++) {
+        const buyExchange = exchanges[Math.floor(Math.random() * exchanges.length)];
+        let sellExchange;
+        do {
+          sellExchange = exchanges[Math.floor(Math.random() * exchanges.length)];
+        } while (sellExchange === buyExchange);
+
+        const cryptoPair = cryptoPairs[Math.floor(Math.random() * cryptoPairs.length)];
+        const buyPrice = (Math.random() * 0.01 + 0.0005).toFixed(6);
+        const sellPrice = (parseFloat(buyPrice) * (1 + Math.random() * 5)).toFixed(6);
+        const profit = generateRandomProfit(2, 500);
+
+        data.push({ buyExchange, sellExchange, cryptoPair, buyPrice, sellPrice, profit });
+      }
+      return data;
+    }
+
+    function updateTable() {
+      const table = document.getElementById('arbitrageTable');
+      const tbody = table.querySelector('tbody');
+      tbody.innerHTML = '';
+
+      const mockData = generateMockData();
+
+      mockData.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.buyExchange}</td>
+          <td>${item.sellExchange}</td>
+          <td>${item.cryptoPair}</td>
+          <td>${item.buyPrice}</td>
+          <td>${item.sellPrice}</td>
+          <td class="profit">${item.profit} %</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById('loading').style.display = 'none';
+      table.style.display = 'table';
+    }
+
+    setInterval(updateTable, 100000);
+    updateTable();
+  </script>
+</body>
+</html>
+
+      <!-- Arbitrage Opportunities end -->
     
     <!-- About Start -->
     <div class="container-xxl py-5">
