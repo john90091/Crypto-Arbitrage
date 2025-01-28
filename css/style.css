@@ -22,7 +22,12 @@ h6,
 .h6 {
     font-weight: 500 !important;
 }
-
+.display-4 mb-3 animated slideInDown{
+color:  #000000
+}
+.animated slideInDown{
+color: #000000
+}
 
 /*** Spinner ***/
 #spinner {
