@@ -84,6 +84,9 @@ h6,
 .navbar .navbar-brand {
     height: 75px;
 }
+.m-0{
+    border: none;
+}
 
 .navbar .navbar-nav .nav-link {
     margin-right: 30px;
