@@ -22,12 +22,7 @@ h6,
 .h6 {
     font-weight: 500 !important;
 }
-.display-4{
-color: #000000;
-}
-.animated{
-color: #696969;
-}
+
 
 /*** Spinner ***/
 #spinner {
