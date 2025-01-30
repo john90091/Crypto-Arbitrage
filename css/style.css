@@ -99,9 +99,11 @@ h6,
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
     color: var(--primary);
-    color: #16D5FF;
+   
 }
-
+.nav-link{
+    color:#16D5FF;
+}
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
