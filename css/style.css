@@ -87,6 +87,9 @@ h6,
 .m-0{
     border: none;
 }
+.title-color{
+    color:#16D5FF;
+}
 
 .navbar .navbar-nav .nav-link {
     margin-right: 30px;
