@@ -1,4 +1,4 @@
-document.title = "Arbg.online " + document.querySelector("h1").innerText;
+document.title = "Arbg.online Crypto Arbitrage " + document.querySelector("h1").innerText;
 
 let metaDesc = document.createElement("meta");
 metaDesc.name = "description";
