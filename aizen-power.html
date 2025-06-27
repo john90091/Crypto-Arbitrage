@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aizen Power Offer</title>
+  <style>
+    body {
+       
+      background-color: #111;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-20px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .label {
+      background-color: #002c85;
+      color: white;
+      font-weight: bold;
+      padding: 20px 5px 5px 5px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card img {
+      height: 150px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .btn {
+      background: linear-gradient(to bottom, #ffc800, #ff9800);
+      color: black;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to bottom, #ffd700, #ffaa00);
+    }
+
+    .shipping {
+      font-size: 12px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    .details {
+      background-color: #111;
+      color: #fff;
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .details h2 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #111;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #2068f7;
+    }
+    .text-one{
+        font-size: 12px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Basic -->
+    <div class="card">
+      <div class="label">BASIC <p class="text-one">1 bottle</p></div>
+      <p>30 Day Supply</p>
+      <img src="/img/aip-1.png" alt="1 bottle" />
+      <div class="price">$69 <span style="font-size: 14px;">/ Bottle</span></div>
+      <p>Total: <del>$99</del> $69</p>
+      <button class="btn">Buy Now</button>
+      <div class="shipping">🚚 Free US Shipping</div>
+    </div>
+
+    <!-- Best Value -->
+    <div class="card">
+      <div class="label">BEST VALUE<p class="text-one">6 bottle</p></div>
+      <p>180 Day Supply</p>
+      <img src="/img/aip-6.png" alt="6 bottles" />
+      <div class="price">$49 <span style="font-size: 14px;">/ Bottle</span></div>
+      <p>Total: <del>$594</del> $294</p>
+      <button class="btn">Buy Now</button>
+      <div class="shipping">🚚 Free US Shipping</div>
+    </div>
+
+    <!-- Most Popular -->
+    <div class="card">
+      <div class="label">MOST POPULAR<p class="text-one">3 bottle</p></div>
+      <p>90 Day Supply</p>
+      <img src="/img/aip-3.png" alt="3 bottles" />
+      <div class="price">$59 <span style="font-size: 14px;">/ Bottle</span></div>
+      <p>Total: <del>$297</del> $177</p>
+      <button class="btn">Buy Now</button>
+      <div class="shipping">🚚 Free US Shipping</div>
+    </div>
+  </div>
+
+  <!-- Product Details Section -->
+  <div class="details">
+    <h2>Product Details</h2>
+    <p><span class="highlight">Aizen Power For Men.</span> We’re here to help you increase performance, stamina & potential. Naturally boosts testosterone levels & energy levels. Increases muscle mass & libido, to help you last. While improving overall performance to give you the confidence you need. Contains 60 Capsules per bottle. Proudly Made in the USA.</p>
+
+    <table>
+      <tr><th>Multipack Quantity</th><td>1</td></tr>
+      <tr><th>Count Per Pack</th><td>60</td></tr>
+      <tr><th>Brand</th><td>Tyqaz</td></tr>
+      <tr><th>Gender</th><td>Male</td></tr>
+      <tr><th>Manufacturer</th><td>Tyqaz</td></tr>
+      <tr><th>Count</th><td>60</td></tr>
+      <tr><th>Size</th><td>60 Capsules</td></tr>
+      <tr><th>Vitamin & Supplement Type</th><td>Energy Supplements</td></tr>
+      <tr><th>Age Group</th><td>Adult</td></tr>
+      <tr><th>Form</th><td>Capsules</td></tr>
+      <tr><th>Item Weight</th><td>0.5 lbs (230 grams)</td></tr>
+    </table>
+  </div>
+
+</body>
+</html>
