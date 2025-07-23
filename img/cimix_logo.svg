@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    width="127.2861328px" height="38.4296875px" viewBox="0 0 127.2861328 38.4296875"
+    enable-background="new 0 0 127.2861328 38.4296875" xml:space="preserve">
+
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF55A5;"/>
+      <stop offset="59%" style="stop-color:#FF5779;"/>
+      <stop offset="100%" style="stop-color:#FF5860;"/>
+    </linearGradient>
+  </defs>
+
+  <g font-family="Arial, sans-serif" font-weight="bold" font-size="39">
+    <!-- Слово CIMIX полностью слитно -->
+    <text x="5" y="30">
+      <tspan fill="#FFFFFF">CI</tspan><tspan fill="url(#grad)">MIX</tspan>
+    </text>
+  </g>
+</svg>
